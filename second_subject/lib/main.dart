@@ -48,6 +48,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         showSelectedLabels: false,
         showUnselectedLabels: false,
         iconSize: 27.0,
+        backgroundColor: Colors.grey[50],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.sticky_note_2_outlined),

@@ -1,63 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import './floating_btn.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
 
-class _HomePageState extends State<HomePage> {
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-  FlutterLocalNotificationsPlugin();
-
-  @override
-  void initState() {
-    super.initState();
-    var initializationSettingsAndroid =
-    AndroidInitializationSettings('@mipmap/ic_launcher');
-    var initializationSettingsIOS = IOSInitializationSettings();
-    var initializationSettings = InitializationSettings(
-        android: initializationSettingsAndroid, iOS: initializationSettingsIOS);
-
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  }
-
-  Future<void> _showNotification() async {
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'your channel id', 'your channel name',
-        channelDescription: 'your channel description',
-        importance: Importance.max,
-        priority: Priority.high,
-        ticker: 'ticker');
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
-    var platformChannelSpecifics = NotificationDetails(
-        android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
-
-    await flutterLocalNotificationsPlugin.show(
-      0,
-      '알림테스트',
-      '플로팅 버튼 클릭 했습니다.',
-      platformChannelSpecifics,
-      payload: 'item x',
-    );
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
-        padding: EdgeInsets.fromLTRB(24, 24, 24, 16),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.auto_awesome_mosaic_outlined),
-        onPressed: _showNotification,
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: Colors.black),
-          borderRadius: BorderRadius.circular(100),
-        ),
-      ),
+        padding: EdgeInsets.fromLTRB(24, 44, 24, 16),
+        children: [
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+              border:Border.all(color: Colors.grey, width: 1),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            child: Row( // Row 위젯을 사용하여 아이템을 수평으로 배열
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
+                  child: CircleAvatar(
+                    radius: 30, // 원의 반지름 설정
+                    backgroundImage: AssetImage('assets/profile.jpg'), // 프로필 이미지 파일
+                  ),
+                ),
+                Text(
+                  '허준우', // 텍스트 내용
+                  style: TextStyle(fontSize: 16, color: Colors.black),
+                ),
+              ],
+            ),
+          ),
+        SizedBox(height: 20), // 컨테이너 사이의 간격
+        Container(
+            height: 400, // 이미지 영역 높이 설정
+            decoration: BoxDecoration(
+              color: Colors.grey, // 이미지가 없을 때 회색 배경
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Center(
+              child: Text(
+                '이미지 예시입니다.', // 이미지 영역 내 텍스트
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+              ),
+            ),
+          )
+        ],
+      )
     );
   }
 }
+
