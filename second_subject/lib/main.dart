@@ -29,7 +29,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   static List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     SearchPage(),
-    SettingsPage(),
+    MyPage(),
   ];
 
   void _onItemTapped(int index) {

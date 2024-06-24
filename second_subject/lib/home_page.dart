@@ -21,33 +21,34 @@ class HomePage extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.fromLTRB(0, 8, 0, 8),
                   child: CircleAvatar(
-                    radius: 30, // 원의 반지름 설정
+                    radius: 30,
                     backgroundImage: AssetImage('assets/profile.jpg'), // 프로필 이미지 파일
                   ),
                 ),
                 Text(
-                  '허준우', // 텍스트 내용
+                  '허준우',
                   style: TextStyle(fontSize: 16, color: Colors.black),
                 ),
               ],
             ),
           ),
-        SizedBox(height: 20), // 컨테이너 사이의 간격
+        SizedBox(height: 20),
         Container(
-            height: 400, // 이미지 영역 높이 설정
+            height: 400,
             decoration: BoxDecoration(
-              color: Colors.grey, // 이미지가 없을 때 회색 배경
+              color: Colors.grey,
               borderRadius: BorderRadius.circular(15),
             ),
             child: Center(
               child: Text(
-                '이미지 예시입니다.', // 이미지 영역 내 텍스트
+                '이미지 예시입니다.',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
           )
         ],
-      )
+      ),
+      floatingActionButton: FloatingButton(),
     );
   }
 }

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-class HomePage extends StatefulWidget {
+class FloatingButton extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _FloatingButtonState createState() => _FloatingButtonState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _FloatingButtonState extends State<FloatingButton> {
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
   FlutterLocalNotificationsPlugin();
 
@@ -44,15 +44,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.auto_awesome_mosaic_outlined),
-        onPressed: _showNotification,
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: Colors.black),
-          borderRadius: BorderRadius.circular(100),
-        ),
+    return FloatingActionButton(
+      child: Icon(Icons.auto_awesome_mosaic_outlined),
+      onPressed: _showNotification,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(width: 1, color: Colors.black),
+        borderRadius: BorderRadius.circular(100),
       ),
     );
   }
